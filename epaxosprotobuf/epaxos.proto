@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package epaxosprotobuf;
+
+enum OK {
+	NONE 		= 0;
+	PREACCEPTED 	= 1;
+	PREACCEPTED_EQ 	= 2;
+	ACCEPTED 	= 3;
+	COMMITTED 	= 4;
+	EXECUTED 	= 5;
+}
+
+message PreAccept  {
+	int32 leader_id			= 1;
+	int32 replica 			= 2;
+	int32 instance			= 3;
+	int32 ballot			= 4;
+	int32 seq			= 5;
+	repeated int32 deps 		= 6;
+	repeated Command command 	= 7;
+}
+
+message PreAcceptReply  {
+	int32 replica 			= 1;
+	int32 instance			= 2;	
+	OK ok				= 3;	
+	int32 ballot			= 4;
+	int32 seq			= 5;
+	repeated int32 deps 		= 6;
+	repeated int32 committed_deps	= 7;
+}
+
+message PreAcceptOK  {
+	int32 Instance 			= 1;
+}
+
+message Accept {
+	int32 leader_id			= 1;
+	int32 replica 			= 2;
+	int32 instance			= 3;
+	int32 ballot			= 4;
+	int32 count			= 5;
+	int32 seq			= 6;
+	repeated int32 deps 		= 7;
+}
+
+message AcceptReply  {
+	int32 replica 			= 1;
+	int32 instance			= 2;
+	OK ok				= 3;
+	int32 ballot			= 4;
+}
+
+message Commit {
+	int32 leader_id			= 1;
+	int32 replica			= 2;
+	int32 instance			= 3;
+	repeated Command command 	= 4;
+	int32 seq			= 5;
+	repeated int32 deps 		= 6;
+}
+
+message CommitShort {
+	int32 leader_id			= 1;
+	int32 replica			= 2;
+	int32 instance			= 3;
+	int32 count			= 4;
+	int32 seq			= 5;
+	repeated int32 deps 		= 6;
+}
+
+message Command {
+	enum Operation {
+		NONEX	= 0;
+		PUT	= 1;
+		GET	= 2;
+		DELETE	= 3;
+		RLOCK	= 4;
+		WLOCK	= 5;
+	} 
+	Operation op			= 1;
+	int64 k 			= 2;
+	int64 v				= 3; 
+}

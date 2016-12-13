@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package genericsmrprotobuf;
+
+import "github.com/relab/epaxos/epaxosprotobuf/epaxos.proto";
+
+enum Ok {
+	NACK 	= 0;
+	OK	= 1; 
+}
+
+message Propose {
+	int32 command_id 		= 1; 
+	epaxosprotobuf.Command command 	= 2;	
+	int64 timestamp			= 3;
+}
+
+message ProposeReplyTS {
+	Ok ok			= 1;	
+	int32 command_id	= 2;
+	int64 value		= 3;
+	int64 timestamp		= 4;
+}
