@@ -1,0 +1,12 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "golang.org/x/net/lex/httplex",
+			"repository": "https://go.googlesource.com/net",
+			"revision": "5916dcb167ed985a5b9e6871fbfd74848a4c170b",
+			"branch": "master",
+			"path": "/lex/httplex"
+		}
+	]
+}
