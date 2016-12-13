@@ -1,0 +1,5 @@
+stable-store-*
+client/client
+server/server
+master/master
+*.swp
