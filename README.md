@@ -16,7 +16,9 @@ conform to the original EPaxos `fastrpc` interface.
 
 ### References
 
-[1] Tormod E. Lea, Leander Jehl, and Hein Meling. _Gorums: New Abstractions for Implementing Quorum-based Systems_. In submission.
+[1] Tormod Erevik Lea, Leander Jehl, and Hein Meling.
+    _Towards New Abstractions for Implementing Quorum-based Systems._
+    In 37th International Conference on Distributed Computing Systems (ICDCS), Jun 2017.
 
 ### Original Authors
 
